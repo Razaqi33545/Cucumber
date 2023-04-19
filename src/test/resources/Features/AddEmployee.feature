@@ -2,7 +2,7 @@ Feature: Employee
 
   # We use tagging when we want to run only chosen testcase and not all with @
   # a Test Case can have multiple tags such as @AddingNewEmp @smoke in the following test case.
-  @AddingNewEmp @smoke
+  @AddingNewEmp @smoke1
   Scenario: Adding a new Employee
      # Given open the browser and launch HRMS application (Hooks will take care of it that's why we comment it)
     When user enters valid email and valid password
