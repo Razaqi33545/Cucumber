@@ -2,11 +2,15 @@ package StepDefinitions;
 
 import Utils.CommonMethods;
 import Utils.ConfigReader;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class Login extends CommonMethods {
@@ -50,8 +54,8 @@ public class Login extends CommonMethods {
     } Hooks will take care of it */
 
 
-    /* This is for regular expression functionality of cucumber for @smoke2 test case alternative way to Java Property files but
-    use for small amount of test cases*/
+    /* This is for regular expression functionality of cucumber for @smoke2 test case and Scenario Outline
+    alternative way to Java Property files but use for small amount of test cases */
     @When("user enters valid {string} and valid {string}")
     public void user_enters_valid_and_valid(String username, String password) {
         WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
@@ -60,4 +64,35 @@ public class Login extends CommonMethods {
         WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
         sendText(passwordTextBox , password);
     }
+
+
+    @When("user enters username and password and verifies login")
+    public void user_enters_username_and_password_and_verifies_login(DataTable dataTable) {
+       List< Map <String , String> > userCredentials = dataTable.asMaps();
+       for(Map<String , String> userCreds : userCredentials){
+           String username = userCreds.get("username");
+           String password = userCreds.get("password");
+
+           WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
+           sendText(usernameTextBox, username);
+
+           WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
+           sendText(passwordTextBox , password);
+
+           WebElement loginBtn = driver.findElement(By.id("btnLogin"));
+           doClick(loginBtn);
+
+           WebElement welcomeIcon = driver.findElement(By.id("welcome"));
+           doClick(welcomeIcon);
+
+           WebElement logoutLink = driver.findElement(By.xpath("//a[text()='Logout']"));
+           doClick(logoutLink);
+       }
+    }
+
+
+
+
+
+
 }

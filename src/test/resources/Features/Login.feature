@@ -31,7 +31,34 @@ Feature: Login Functionalities
   # 1) Hard coding which is not professional and should not be used.
   # 2) property file of Java
   # 3) regular expression functionality of cucumber
-  # 4) Scenario Outline : provides you an alternative to Data Driven Testing and also supports parameterization.Feature
+  # 4) Scenario Outline : provides you an alternative to Data Driven Testing and also supports parameterization.
+                        # Scenario Outline is always used along with the keyword 'Examples'
 
 
-  # Executing the same test case with different data is called parameterization.
+  # Executing the same test case with different data is called parameterization. This code is executed without using Java.
+
+  @scenarioOutline
+  # When you want to do parameterization or Data driven testing use the Scenario Outline:
+  Scenario Outline: Login with multiple credentials using scenario outline
+    # Given open the browser and launch HRMS application
+    When user enters valid "<username>" and valid "<password>"
+    And click on login button
+    Then user is logged in successfully
+     # Then close the browser
+    Examples:
+      | username | password   |
+      | admin    | Hum@nhrm123|
+      | ADMIN    | Hum@nhrm123|
+      | Jason    | Hum@nhrm123|
+# With Scenario Outline the browser will open and close three times in the above example.
+  # but in data Table it will only open ones and close ones.
+
+    #data Table
+   @dataTable
+  Scenario: Login with multiple credentials using data table
+    When user enters username and password and verifies login
+
+      | username | password   |
+      | admin    | Hum@nhrm123|
+      | ADMIN    | Hum@nhrm123|
+      | Jason    | Hum@nhrm123|
