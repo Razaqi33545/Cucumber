@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(features = "src\\test\\resources\\Features" ,
-                    glue = "StepDefinitions" ,
-                    dryRun = false ,
-                  //  tags = "@Valid_Admin" , // This tag will run only @empSearch we can use multiple also "@TestCase1 or @TestCase2" If we want all to run comment tags
-                    plugin = {"pretty"}  ) // Pretty shows some important information in the console about ran test cases.
+        glue = "StepDefinitions" ,
+        dryRun = false ,
+        tags = "@smoke2" , // This tag will run only entered test cases we can use multiple also "@TestCase1 or @TestCase2" If we want all to run comment tags
+        plugin = {"pretty"}  ) // Pretty shows some important information in the console about ran test cases.
 
 
 
