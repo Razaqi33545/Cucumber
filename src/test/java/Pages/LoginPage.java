@@ -10,13 +10,14 @@ import javax.xml.xpath.XPath;
 
 public class LoginPage extends CommonMethods { // We have created an object of this class in Login.java class to access it there.
 
-                    // Page Factory Model
+    // Page Object Model : An object repository [It stores or holds all the webElements specific to a particular page]
 
-    public LoginPage(){ // This is a constructor
-        PageFactory.initElements(driver , this); // This means I want to initialize all these web-elements through driver which are on this page
+    // Page Factory Model :
+    public LoginPage(){ // This means I want to initialize all the web-elements of this current page through driver.
+        PageFactory.initElements(driver , this);
     }
     //WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
-    @FindBy(id = "txtUsername") // This is used repetitively in Login.java
+    @FindBy(id = "txtUsername") // This is used repetitively in Login.java So we created this class to avoid repetition.
    public WebElement usernameTextBox;
 
    // WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));

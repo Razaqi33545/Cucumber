@@ -1,5 +1,6 @@
 package Utils;
 
+import StepDefinitions.PageInitializer;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 import java.util.List;
 
-public class CommonMethods {
+public class CommonMethods extends PageInitializer {
     /*
     As the launching and closing of browser are common methods for all test cases even if we have 100s of them we create this class
     to have those common methods in this Utils package and CommonMethods class. We have created the Constants class and as it is static
@@ -46,6 +47,7 @@ public class CommonMethods {
         driver.manage().window().maximize();
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.WAIT_TIME));
+        initializePageObjects(); // This will initialize all the pages we have in our page PageInitializer along with the launching of application.
     }
 
     public static void closeBrowser(){

@@ -15,6 +15,8 @@ Feature: Login Functionalities
     # HOOKS Class cannot be inherited, but it can inherit other classes. (This is extra info not needed for job)
 
 
+
+
   @smoke2
   Scenario: Valid Admin login
      # Given open the browser and launch HRMS application
@@ -27,7 +29,7 @@ Feature: Login Functionalities
   # This is inbuilt functionality of cucumber and the data is pushed from feature file to java file.
   # which is called regular expression functionality of cucumber
 
-  # We have learned 3 ways to get data into Java:
+  # We have learned 3 ways to push data from feature file into stepDefinition class:
   # 1) Hard coding which is not professional and should not be used.
   # 2) property file of Java
   # 3) regular expression functionality of cucumber
@@ -36,6 +38,9 @@ Feature: Login Functionalities
 
 
   # Executing the same test case with different data is called parameterization. This code is executed without using Java.
+
+
+
 
   @scenarioOutline
   # When you want to do parameterization or Data driven testing use the Scenario Outline:
@@ -53,7 +58,10 @@ Feature: Login Functionalities
 # With Scenario Outline the browser will open and close three times in the above example.
   # but in data Table it will only open ones and close ones.
 
-    #data Table
+
+
+
+    #data Table : This will happen again and again until all test data is tested.
    @dataTable
   Scenario: Login with multiple credentials using data table
     When user enters username and password and verifies login
